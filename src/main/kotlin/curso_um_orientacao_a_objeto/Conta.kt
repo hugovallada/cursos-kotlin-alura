@@ -1,43 +1,21 @@
 package curso_um_orientacao_a_objeto
 
-class Conta(val titular: String,
+abstract class Conta(val titular: String,
             val numero: Int) {
 
     var saldo = 0.0
-        private set(valor){
+        protected set(valor){
             if(valor <= 0) {
                 return
             }
             field = valor
         }
 
+    abstract fun depositar(valor: Double)
 
+    abstract fun sacar(valor: Double)
 
-    fun depositar(valor: Double){
-        when{
-            valor <= 0 -> println("Não pode fazer isso")
-            else -> this.saldo += valor
-        }
-    }
-
-    fun sacar(valor: Double){
-        when {
-            valor <= 0 -> println("Não pode fazer isso")
-            valor in 0.0..saldo -> saldo -= valor
-            else -> println("Não pode fazer isso")
-        }
-    }
-
-    fun transferencia(valor:Double, contaASerTransferida:Conta){
-        when{
-            valor <= 0 -> println("Não pode fazer isso")
-            valor in 0.0..saldo -> {
-                contaASerTransferida.depositar(valor)
-                saldo -= valor
-            }
-            else -> println("Não pode fazer isso")
-        }
-    }
+    //abstract fun transferencia(valor:Double, contaASerTransferida:Conta)
 
     /**
      * Esse tipo de código não é interessante

@@ -1,14 +1,17 @@
 package curso_um_orientacao_a_objeto
 
+import curso_heranca_polimorfismo_e_interfaces.ContaCorrente
+import curso_heranca_polimorfismo_e_interfaces.ContaPoupanca
+
 fun main(){
 
-    val conta = Conta(titular = "Hugo", numero = 1000)
+    val conta = ContaCorrente(titular = "Hugo", numero = 1000)
     conta.depositar(20.0)
     println(conta.saldo)
     conta.sacar(10.0)
     println(conta.saldo)
 
-    val conta2 = Conta(titular = "Fran", numero = 1001)
+    val conta2 = ContaPoupanca(titular = "Fran", numero = 1001)
 
     conta.transferencia(10.0, conta2)
     println("Conta1: ${conta.saldo}  - Conta2: ${conta2.saldo}")
