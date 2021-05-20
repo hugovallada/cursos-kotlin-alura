@@ -1,10 +1,7 @@
-package curso_um_orientacao_a_objeto
+package curso_recursos_e_pacotes.modelo
 
-
-
-abstract class Conta(
-    val titular: String,
-    val numero: Int) {
+abstract class Conta(val titular: Cliente,
+            val numero: Int) {
 
     var saldo = 0.0
         protected set(valor){
@@ -13,6 +10,15 @@ abstract class Conta(
             }
             field = valor
         }
+
+    companion object {
+        var total = 0
+            private set
+    }
+
+    init {
+        total++
+    }
 
     abstract fun depositar(valor: Double)
 
